@@ -8,7 +8,12 @@ if ($debug) {
 
 Write-Host "Script root: $PSScriptRoot, profile: $env:UserProfile"
 
-. "$PSScriptRoot\config.ps1"
+try {
+  . "$PSScriptRoot\config.ps1"
+} catch {
+  Write-Error "Config file not found"
+  exit 1
+}
 
 if (!$Source -or !$Destination -or !$BackupBase) {
   Write-Error "Mandatory fields are missing! Review your config
