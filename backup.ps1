@@ -32,13 +32,8 @@ robocopy $Source "$Destination\$BackupBase" `
 $ExitCode = $LastExitCode
 
 Write-Host "robocopy returned $LastExitCode"
-if ($LastExitCode -le 3) {
-  $status = 'up'
-  $msg = 'OK'
-} else {
-  $status = 'down'
-  $msg = "Return=$LastExitCode"
-}
+$status = if ($LastExitCode -le 3) { 'up' } else { 'down' }
+$msg = "Return=$LastExitCode"
 
 $pushURL = "https://uptime.juzam.pro/api/push/${MonitorId}?status=${status}&msg=${msg}"
 $res = Invoke-WebRequest -UseBasicParsing -Uri $pushURL
