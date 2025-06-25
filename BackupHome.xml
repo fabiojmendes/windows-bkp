@@ -46,7 +46,7 @@
   <Actions Context="Author">
     <Exec>
       <Command>powershell.exe</Command>
-      <Arguments>%USERPROFILE%\Scripts\backup.ps1 -debug</Arguments>
+      <Arguments>-ExecutionPolicy Bypass %USERPROFILE%\Scripts\backup.ps1 -debug</Arguments>
     </Exec>
   </Actions>
 </Task>
