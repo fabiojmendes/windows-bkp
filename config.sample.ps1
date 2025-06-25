@@ -1,0 +1,6 @@
+$Source = "C:\Users\user"
+$Destination = "\\host.example.com\Share"
+$BackupBase = "backup"
+$ShareUsername = "usename"
+$SharePassword = "password"
+$MonitorId = "uptime-push-id"
