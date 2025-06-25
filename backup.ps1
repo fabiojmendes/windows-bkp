@@ -49,4 +49,4 @@ if ($debug) {
   Stop-Transcript
 }
 
-robocopy $env:TEMP $Destination\${BackupBase}-logs backup*.log /r:1
+robocopy $env:TEMP $Destination\${BackupBase}-logs backup*.log /r:1 | Out-Null
