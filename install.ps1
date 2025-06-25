@@ -8,7 +8,7 @@ if (-not (Test-Path -Type Container -Path $install_path)) {
 if (-not (Test-Path -Type Leaf -Path $install_path\config.ps1)) {
   Write-Host "First time installation, config file needs to be populated"
     try {
-      Copy-Item -Path config.ps1 -Destination $install_path\config.ps1
+      Copy-Item -Path .\config.ps1 -Destination $install_path\config.ps1 -ErrorAction stop
     } catch {
       Write-Error "Create a copy of config.sample.ps1 named config.ps1 before continuing with the installation"
       exit 1
