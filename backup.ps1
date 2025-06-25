@@ -23,6 +23,7 @@ if (!$Source -or !$Destination -or !$BackupBase) {
   exit 1
 }
 
+Write-Host "Connecting to the network share $Destination"
 net use $Destination /user:$ShareUsername $SharePassword
 
 Write-Host "Backing up $Source to $Destination\$BackupBase"
@@ -37,7 +38,7 @@ robocopy $Source "$Destination\$BackupBase" `
 $ExitCode = $LastExitCode
 
 Write-Host "robocopy returned $LastExitCode"
-$status = if ($LastExitCode -le 3) { 'up' } else { 'down' }
+$status = if ($LastExitCode -le 3) { "up" } else { "down" }
 $msg = "Return=$LastExitCode"
 
 $pushURL = "https://uptime.juzam.pro/api/push/${MonitorId}?status=${status}&msg=${msg}"
